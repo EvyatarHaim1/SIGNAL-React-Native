@@ -3,18 +3,20 @@ import { View, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { auth } from '../firebase';
 
-const CustomListItem = () => {
+const CustomListItem = ({ id, chatName, enterChat}) => {
 
-    console.log(auth.currentUser.photoURL)
     return (
         <ListItem>
             <Avatar rounded
                     source={{
-                        uri: auth?.currentUser?.photoURL || "https://www.pinclipart.com/picdir/middle/547-5475593_blank-person-avatar-clipart.png",
+                        uri: "https://www.pinclipart.com/picdir/middle/547-5475593_blank-person-avatar-clipart.png",
                     }}
             />
             <ListItem.Content>
                  <ListItem.Title style={{ fontWeight: "800" }}> Youtube Chat </ListItem.Title>
+                 <ListItem.Subtitle numberOfLines={1} ellipsizeMode="tail">
+                     this is a test Subtitle
+                 </ListItem.Subtitle>
             </ListItem.Content>
         </ListItem>
     )
