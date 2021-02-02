@@ -16,7 +16,7 @@ const AddChatScreen = ({ navigation }) => {
     }, [navigation]);
      
     const createChat = async () => {
-        await db.collection('Chats').add({
+        await db.collection('chats').add({
             chatName: input
         }).then(() => {
             navigation.goBack()
@@ -43,6 +43,8 @@ export default AddChatScreen
 
 const styles = StyleSheet.create({
     container:{
-
-    }
+       backgroundColor: "white",
+       padding: 30,
+       height: "100%",
+    },
 })
