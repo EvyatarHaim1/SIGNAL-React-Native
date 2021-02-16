@@ -1,5 +1,5 @@
 import React, { useState, useEffect ,useLayoutEffect } from 'react';
-import { SafeAreaView, View, Text, ScrollView } from 'react-native';
+import { SafeAreaView, View, Text, ScrollView, StyleSheet } from 'react-native';
 import CustomListItem from '../components/CustomListItem';
 import { Avatar } from 'react-native-elements';
 import { auth, db } from '../firebase';
@@ -60,11 +60,23 @@ const HomeScreen = ({ navigation}) => {
         });
      }, [navigation])
 
+     const enterChat = (id, chatName) => {
+         navigation.navigate('Chat', {
+             id,
+             chatName,
+         });
+     }
+
     return (
         <SafeAreaView>
-            <ScrollView>
+            <ScrollView style={styles.container}>
                 {chats.map(({ id, data: { chatName }}) => (
-                <CustomListItem key={id} id={id} chatName={chatName}/>
+                <CustomListItem 
+                               key={id} 
+                               id={id} 
+                               chatName={chatName}
+                               enterChat={enterChat}
+                />
                 ))}
 
             </ScrollView>
@@ -73,3 +85,9 @@ const HomeScreen = ({ navigation}) => {
 }
 
 export default HomeScreen;
+
+const styles = StyleSheet.create({
+    container:{
+        height: '100%',
+    }
+})
